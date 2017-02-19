@@ -1,20 +1,18 @@
 #include "list.h"
 
-void createList(List &L)
-{
+void createList(List &L) {
     /**
     * FS : first(L) diset Nil
     */
     //-------------your code here-------------
     // NIM : 1301164490
 
-        first(L) = NULL;
+    first(L) = NULL;
 
     //----------------------------------------
 }
 
-address alokasi(infotype x)
-{
+address alokasi(infotype x) {
     /**
     * FS : mengembalikan elemen list baru dengan info = x, next elemen = Nil
     */
@@ -28,26 +26,24 @@ address alokasi(infotype x)
         next(P) = NULL;
 
 
-
     //----------------------------------------
     return P;
 }
 
-void dealokasi(address &P)
-{
+void dealokasi(address &P) {
     /**
     * FS : menghapus elemen yang ditunjuk oleh P (delete)
     */
     //-------------your code here-------------
     // NIM : 1301164490
 
-        delete P;
+    delete P;
+
 
     //----------------------------------------
 }
 
-void insertFirst(List &L, address P)
-{
+void insertFirst(List &L, address P) {
     /**
     * IS : List L mungkin kosong
     * FS : elemen yang ditunjuk P menjadi elemen pertama pada List L
@@ -63,31 +59,32 @@ void insertFirst(List &L, address P)
         next(P) = first(L);
         first(L)= P;
 
-    }
-
-
-
-
+}
 
     //----------------------------------------
 }
 
-void insertLast(List &L, address P)
-{
+void insertLast(List &L, address P) {
     /**
     * IS : List L mungkin kosong
     * FS : elemen yang ditunjuk P menjadi elemen terakhir pada List L
     */
     //-------------your code here-------------
-    // NIM :
-
-
-
+    // NIM : 1301164080
+    address Q;
+    if(first(L) == NULL) {
+        insertFirst(L, P);
+    } else {
+        Q = first(L);
+        while(next(Q) != NULL) {
+            Q = next(Q);
+        }
+        next(Q) = P;
+    }
     //----------------------------------------
 }
 
-address findElm(List L, infotype x)
-{
+address findElm(List L, infotype x) {
     /**
     * IS : List L mungkin kosong
     * FS : mengembalikan elemen dengan info.ID = x.ID,
@@ -96,28 +93,47 @@ address findElm(List L, infotype x)
 
     address P;
     //-------------your code here-------------
-    // NIM :
-
-
+    // NIM : 1301164080
+    if(first(L)==NULL){
+        P=first(L);
+        infotype i=info(P);
+        while(i.id != x.id && next(P) != NULL){
+            P=next(P);
+            i=info(P);
+        }
+        if(i.id != x.id){
+            P=NULL;
+        }
+        else{
+            P=NULL;
+        }
+    }
     //----------------------------------------
     return P;
 }
 
-void deleteFirst(List &L, address &P)
-{
+void deleteFirst(List &L, address &P) {
     /**
     * IS : List L mungkin kosong
     * FS : elemen pertama di dalam List L dilepas dan disimpan/ditunjuk oleh P
     */
     //-------------your code here-------------
-    // NIM :
+    // NIM : 1301164080
 
+	if(first(L) !=NULL){
+        P=first(L);
+        first(L)=next(first(L));
+        next(P)=NULL;
+        cout<<"Delete Berhasil"<<endl;
+	}
+	else{
+        cout<<"List Kosong"<<endl;
+	}
 
     //----------------------------------------
 }
 
-void deleteLast(List &L, address &P)
-{
+void deleteLast(List &L, address &P) {
     /**
     * IS : List L mungkin kosong
     * FS : elemen tarakhir di dalam List L dilepas dan disimpan/ditunjuk oleh P
@@ -148,13 +164,10 @@ void deleteLast(List &L, address &P)
         }
 
 
+    //----------------------------------------
 }
 
-//----------------------------------------
-}
-
-void printInfo(List L)
-{
+void printInfo(List L) {
     /**
     * FS : menampilkan info seluruh elemen list L
     */
@@ -185,15 +198,14 @@ void printInfo(List L)
 }
 
 
-void insertAfter(address Prec, address P)
-{
+void insertAfter(address Prec, address P) {
     /**
     * IS : Prec dan P tidak NULL
     * FS : elemen yang ditunjuk P menjadi elemen di belakang elemen yang
     *      ditunjuk pointer Prec
     */
     //-------------your code here-------------
-    // NIM :1301160362
+    // NIM : 1301160362
     if ( first(L)== NULL){
 
         cout<< " LIST KOSONG" << endl;
@@ -204,8 +216,7 @@ void insertAfter(address Prec, address P)
     //----------------------------------------
 
 }
-void deleteAfter(address Prec, address &P)
-{
+void deleteAfter(address Prec, address &P) {
     /**
     * IS : Prec tidak NULL
     * FS : elemen yang berada di belakang elemen Prec dilepas
@@ -224,5 +235,6 @@ void deleteAfter(address Prec, address &P)
     {
         cout << "LIST KOSONG"<< endl;
     }
-        //----------------------------------------
+    //----------------------------------------
 }
+
