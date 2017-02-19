@@ -2,6 +2,7 @@
 #define LIST_H_INCLUDED
 
 #include <iostream>
+#include <string>
 
 #define first(L) L.first
 #define next(P) P->next
@@ -30,12 +31,11 @@ using namespace std;
 **/
 
 
-struct [stuff]{
+struct stuff{
 	int id;
     //------------- your code here -----------
-    
-	
-	
+    string car_brand;
+    string car_type;
     //----------------------------------------
 };
 
@@ -44,15 +44,14 @@ typedef struct elmlist *address;
 
 struct elmlist{
     //------------- your code here -----------
-    
-	
+    infotype info;
+    address next;
     //----------------------------------------
 };
 
 struct List{
     //------------- your code here -----------
-    
-	
+    address first;
     //----------------------------------------
 };
 
@@ -66,8 +65,8 @@ address findElm(List L, infotype x);
 void deleteFirst(List &L, address &P);
 void deleteLast(List &L, address &P);
 void printInfo(List L);
-void insertAfter(address Prec, address P);
-void deleteAfter(address Prec, address &P);
+void insertAfter(List L, address Prec, address P);
+void deleteAfter(List L, address Prec, address &P);
 
 
 #endif // LIST_H_INCLUDED
